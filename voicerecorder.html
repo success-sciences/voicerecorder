@@ -1,31 +1,163 @@
-var mic
-var vol = 0
+<iframe height="400" src="https://clyp.it/recording-widget" frameborder="0" style="border-radius: 4px; width: 100%; max-width: 400px;"></iframe>
+<html class="recording-widget-html"><head>
+    
 
-function setup() {
-  createCanvas(windowWidth, windowHeight);
-  // Create an Audio input
-  mic = new p5.AudioIn();
-     // start the Audio Input.
-  // By default, it does not .connect() (to the computer speakers)
-  mic.start();
-}
+<title>Online Embeddable Voice Recorder - Clyp</title>
 
-function draw() {
-  background(200);
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  // Get the overall volume (between 0 and 1.0)
-   var vol = mic.getLevel();
-  
-  fill(127);
-  stroke(0);
-  
-  // Draw an ellipse with height based on volume
-  var h = map(vol, 0, 0.5, height, 0);
-  ellipse(width/2, h - 25, 50, 50);
-}
+<meta name="description" content="Clyp is a free online voice recorder where you can record and upload audio.">
+<meta property="og:description" content="Clyp is a free online voice recorder where you can record and upload audio.">
+<meta property="og:title" content="Online Embeddable Voice Recorder - Clyp">
+<meta property="og:image" content="https://static.clyp.it/site/images/logos/clyp-og-1200x630.png">
+<meta property="og:site_name" content="Clyp">
+<meta property="og:type" content="website">
 
-function touchStarted() {
-  getAudioContext().resume()
-}
+<link rel="icon" type="image/png" href="https://static.clyp.it/site/images/favicons/apple-touch-icon-precomposed.png">
+<link rel="apple-touch-icon" href="https://static.clyp.it/site/images/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://static.clyp.it/site/images/favicons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://static.clyp.it/site/images/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://static.clyp.it/site/images/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://static.clyp.it/site/images/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://static.clyp.it/site/images/favicons/apple-touch-icon-precomposed.png">
 
-<iframe width="400" height="400" src="https://clyp.it/recording-widget" frameborder="0" style="border-radius: 4px;"></iframe>
+    <link href="//static.clyp.it/site/css/clyp-1.0.36.css" rel="stylesheet">
+    <link href="//static.clyp.it/site/css/recorder.landing.page-1.0.9.css" rel="stylesheet">
+
+    <script type="text/javascript" async="" src="https://www.gstatic.com/recaptcha/releases/dpzVjBAupwRfx3UzvXRnnAKb/recaptcha__en.js" crossorigin="anonymous" integrity="sha384-ZPSKvKG0WipeaRQyUewUQ0wMawOWTmw32n5nBKnR21FA4MBKHzMEW63JHSOUpp32"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script>
+    window.clypCampaigns = [
+    ];
+
+    window.clypCampaigns.getFromAddressBar = function () {
+        var queryString = window.location.search.toLowerCase();
+        for (var i = 0; i < window.clypCampaigns.length; i++) {
+            var campaign = window.clypCampaigns[i];
+            if (campaign.queryString === queryString) {
+                return campaign;
+            }
+        }
+        return null;
+    };
+
+    function setCampaign() {
+        var campaign = window.clypCampaigns.getFromAddressBar();
+        if (!campaign) return;
+        var data = campaign.campaignData;
+        ga('set', 'campaignName', data.name);
+        ga('set', 'campaignSource', data.source);
+        ga('set', 'campaignMedium', data.medium);
+    };
+
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] ||
+            function() {
+                (i[r].q = i[r].q || []).push(arguments);
+            }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-48239909-1', 'auto');
+    setCampaign();
+    ga('send', 'pageview');
+</script>
+
+</head>
+<body>
+
+<section class="recorder-lp-recorder-section" data-bind="visible: true" style="">
+    <div class="recorder-lp-webrecorder-wrapper" data-bind="foreach: tabs, visible: recordVm.clientCanRecordInBrowser()">
+        <!-- ko 'if': name === 'Record' --><!-- /ko -->
+    
+        <!-- ko 'if': name === 'Record' -->
+<div class="record-tab tab" data-bind="with: $parent.recordVm, visible: $parent.recordVm.clientCanRecordInBrowser(), css: { 'active': $parent.activeTab() === 'Record' &amp;&amp; name === 'Record' }">
+    <section class="web-recorder-section">
+        <div class="web-recorder-wrapper">
+            <div class="web-recorder-centered-content">
+                <div class="top-section" data-bind="">
+                    <div class="playback-count" data-bind="text: currentPositionText, visible: showRecorderTime()">00:02</div>
+                    <div class="upload-progress-text" data-bind="visible: webRecordingUploadInProgress(), text: uploadProcessingText" style="display: none;">Uploading ...</div>
+                    <div class="upload-failed-text" data-bind="visible: uploadFailed()" style="display: none;">Upload failed</div>
+                    <div class="upload-success-logo" data-bind="visible: uploadsucceeded()" style="display: none;">
+                        <a target="_blank" href="/">
+                            <img src="https://static.clyp.it/site/images/logos/clyp-logo-primary-98x44.svg" class="logo" alt="Clyp logo">
+                        </a>
+                    </div>
+                </div>
+                <div class="middle-section">
+                    <div class="record-button" data-bind="click: startRecording, visible: startRecordButtonVisible()" style="display: none;"></div>
+                    <div class="stop-record-button" data-bind="click: stopRecording, visible: stopRecordButtonVisible()" style="display: none;"></div>
+                    <div class="play-button large" data-bind="click: play, visible: playPreviewButtonVisible()" style=""></div>
+                    <div class="pause-button large" data-bind="click: pause, visible: pausePreviewButtonVisible()" style="display: none;"></div>
+                    <div class="progress-meter" data-bind="progress: uploadBox.percentUploaded(), visible: webRecordingUploadInProgress()" style="position: relative; display: none;"><svg viewBox="0 0 100 100" style="display: block; width: 100%;"><path d="M 50,50 m 0,-47.5 a 47.5,47.5 0 1 1 0,95 a 47.5,47.5 0 1 1 0,-95" stroke="#eee" stroke-width="1" fill-opacity="0"></path><path d="M 50,50 m 0,-47.5 a 47.5,47.5 0 1 1 0,95 a 47.5,47.5 0 1 1 0,-95" stroke="#3DBEB3" stroke-width="5" fill-opacity="0" style="stroke-dasharray: 298.493, 298.493; stroke-dashoffset: 298.493;"></path></svg><div class="progressbar-text" style="position: absolute; left: 50%; top: 50%; padding: 0px; margin: 0px; transform: translate(-50%, -50%); color: rgb(61, 190, 179);">0%</div></div>
+                    <div class="upload-error-circle" data-bind="visible: uploadFailed()" style="display: none;">
+                        <img src="https://static.clyp.it/site/images/icons/upload-error-icon.svg" alt="Error!">
+                    </div>
+                    <div class="upload-success-content" data-bind="visible: uploadsucceeded()" style="display: none;">
+                        <h2 class="upload-success-text">Upload successful!</h2>
+                        <h4 class="upload-success-subtext">Copy the link below to share your Clyp</h4>
+                        <input class="upload-url" type="text" onclick="this.select();" data-bind="value: playerPageUrl()" readonly="readonly">
+                    </div>
+                </div>
+                <div class="bottom-section">
+                    <div class="web-recorder-terms" data-bind="visible: tosVisible()" style="display: none;">
+                        By recording you agree to our <a target="_blank" href="/terms">Terms</a>
+                    </div>
+                    <div class="upload-buttons" data-bind="visible: uploadButtonsVisible()" style="">
+                        <button class="discard-button" data-bind="click: retry">Discard</button>
+                        <button class="button tiny primary" data-bind="click: upload">Upload</button>
+                    </div>
+                    <div>
+                        <div class="web-recorder-text-button" data-bind="click: uploadBox.abortUpload, visible: webRecordingUploadInProgress()" style="display: none;">Cancel</div>
+                        <div class="web-recorder-text-button" data-bind="click: retry, visible: uploadFailed()" style="display: none;">Try again</div>
+                        <a data-bind="visible: uploadsucceeded(), click: retry" style="display: none;">Record something else</a>
+                    </div>
+                </div>
+            </div>
+            <audio id="webRecorderPlayback"></audio>
+        </div>
+    </section>
+</div>
+<!-- /ko -->
+    </div>
+    <div class="browser-lacks-support" data-bind="visible: !recordVm.clientCanRecordInBrowser()" style="display: none;">
+        <span class="no-support-callout">Your browser doesn't support recording.</span>
+        <span>Please download <a target="_blank" href="https://www.google.com/chrome/browser/desktop/">Google Chrome</a> or <a target="_blank" href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a> to record audio in your browser.</span>
+    </div>
+</section>
+
+<audio id="nativeAudioPlayer"></audio>
+
+    <script src="//static.clyp.it/site/js/global-1.0.73.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6LeHdeEUAAAAAMAK_VmVxt3NvbT6B6erhVAG_bfW"></script>
+
+<script>
+    var bootstrapData = {
+        'siteUrl': 'https://clyp.it/',
+        'apiUrl': 'https://api.clyp.it/',
+        'uploadUrl': 'https://upload.clyp.it/',
+        'facebookApplicationId': '433028836814478',
+        'soundwaveUrl': 'https://soundwave.clyp.it/',
+        'autoplay': false,
+        'isWidget': true
+    };
+
+    var headerViewModel = new HeaderViewModel(bootstrapData);
+    var uploadBoxVm = new UploadBoxViewModel(headerViewModel);
+    var recordVm = new RecordInBrowserViewModel(headerViewModel, uploadBoxVm);
+    var recorderSection = document.getElementsByClassName('recorder-lp-recorder-section')[0];
+
+    var uploadModalVM = new UploadModalViewModel(bootstrapData,
+        null,
+        uploadBoxVm,
+        recordVm,
+        false);
+
+    ko.applyBindings(uploadModalVM, recorderSection);
+</script>
+
+<svg id="SvgjsSvg1001" width="2" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" style="opacity: 0; position: fixed; left: 100%; top: 100%; overflow: hidden;"><defs id="SvgjsDefs1002"></defs><polyline id="SvgjsPolyline1003" points="0,0"></polyline><path id="SvgjsPath1004" d="M0 0 "></path></svg><div><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s ease 0s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe title="reCAPTCHA" src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LeHdeEUAAAAAMAK_VmVxt3NvbT6B6erhVAG_bfW&amp;co=aHR0cHM6Ly9jbHlwLml0OjQ0Mw..&amp;hl=en&amp;v=dpzVjBAupwRfx3UzvXRnnAKb&amp;size=invisible&amp;cb=3ixdj55fjce7" width="256" height="60" role="presentation" name="a-35lr84rennte" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response-100000" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;"></iframe></div></body></html>
